@@ -9,8 +9,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  observable: 0.22.2
+  observable_ish: 2.1.4
 environment:
-  sdk: ">=1.19.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 analyzer:
   strong-mode: true
