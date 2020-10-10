@@ -540,12 +540,12 @@ class SimCard {
   String imei;
   SimCardState state;
 
-  SimCard({
-    @required this.slot,
-    @required this.imei,
-    this.state = SimCardState.Unknown
-  }) : assert(slot != null),
-       assert(imei != null);
+  SimCard(
+      {@required this.slot,
+      @required this.imei,
+      this.state = SimCardState.Unknown})
+      : assert(slot != null),
+        assert(imei != null);
 
   SimCard.fromJson(Map map) {
     if (map.containsKey('slot')) {
@@ -555,7 +555,7 @@ class SimCard {
       this.imei = map['imei'];
     }
     if (map.containsKey('state')) {
-      switch(map['state']) {
+      switch (map['state']) {
         case 0:
           this.state = SimCardState.Unknown;
           break;
@@ -579,21 +579,18 @@ class SimCard {
   }
 }
 
-
 //added by Geordy Van Cutsem
 class SmsRemover {
   static const platform = const MethodChannel(METHOD_CHANNEL_REMOVE_SMS);
 
-
-  Future<bool> removeSmsById(int id, int threadId) async {
+  Future<bool> removeSms(String fromAddress) async {
     Map arguments = {};
-    arguments['id'] = id;
-    arguments['thread_id'] = threadId;
+    arguments['fromAddress'] = fromAddress;
     bool finalResult;
     try {
       final bool result = await platform.invokeMethod('removeSms', arguments);
       finalResult = result;
-    } catch (e){
+    } catch (e) {
       print(e);
     }
 
@@ -620,7 +617,7 @@ class SimCardsProvider {
     final simCards = new List<SimCard>();
 
     dynamic response = await _channel.invokeMethod('getSimCards', null);
-    for(Map map in response) {
+    for (Map map in response) {
       simCards.add(new SimCard.fromJson(map));
     }
 
