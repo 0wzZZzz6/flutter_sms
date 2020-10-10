@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sms_maintained/contact.dart';
 import 'package:sms_maintained/models/contact/contact.dart';
 import 'package:sms_maintained/sms.dart';
 
@@ -31,9 +30,8 @@ class ReceivedMessage extends Message {
               new Expanded(
                 child: new Container(
                   decoration: new BoxDecoration(
-                    borderRadius: new BorderRadius.circular(10.0),
-                    color: this.backgroundColor
-                  ),
+                      borderRadius: new BorderRadius.circular(10.0),
+                      color: this.backgroundColor),
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:sms_maintained/contact.dart';
 import 'package:sms_maintained/models/contact/userprofile.dart';
 import 'package:sms_maintained/sms.dart';
 
@@ -11,8 +10,7 @@ class ConversationStore extends InheritedWidget {
   final SmsThread thread;
 
   static ConversationStore of(BuildContext context) {
-    return context.inheritFromWidgetOfExactType(ConversationStore)
-        as ConversationStore;
+    return context.dependOnInheritedWidgetOfExactType() as ConversationStore;
   }
 
   @override

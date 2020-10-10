@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'package:flutter/services.dart';
 
 import 'globals.dart';
 import 'models/contact/contact.dart';
 import 'models/contact/userprofile.dart';
-
 
 /// Called when sending SMS failed
 typedef void ContactHandlerFail(Object e);
@@ -19,7 +17,8 @@ class ContactQuery {
 
   factory ContactQuery() {
     if (_instance == null) {
-      final MethodChannel methodChannel = const MethodChannel(METHOD_CHANNEL_CONTACT_QUERY, const JSONMethodCodec());
+      final MethodChannel methodChannel = const MethodChannel(
+          METHOD_CHANNEL_CONTACT_QUERY, const JSONMethodCodec());
       _instance = new ContactQuery._private(methodChannel);
     }
     return _instance;
@@ -53,8 +52,6 @@ class ContactQuery {
     });
   }
 }
-
-
 
 /// Used to get the user profile
 class UserProfileProvider {
